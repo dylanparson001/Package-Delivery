@@ -28,9 +28,10 @@ class HashTable:
     def search(self, key):
         index = self.__hash(key)
         bucket = self.data_map[index]
-        for item in bucket:
-            if item[0] == key:
-                return item
+        if bucket is not None:
+            for item in bucket:
+                if item[0] == key:
+                    return item
         # index = self.__hash(key)
         # if self.data_map[index] is not None:
         #     for i in range(len(self.data_map[index])):
@@ -47,8 +48,9 @@ class HashTable:
                 bucket.remove(item)
 
     def printValues(self, key):
-        example = self.get_item(key)
-        print("ID: ", example[1].id, " Address: ", example[1].address, " City: ", example[1].city, " Zip: ", example[1].zip, " Deadline: ", example[1].deadline,
-              " Weight: ", example[1].weight, " Notes: ", example[1].notes, " Status: ", example[1].status)
+        example = self.search(key)
+        if example is not None:
+            print("ID: ", example[1].id, " Address: ", example[1].address, " City: ", example[1].city, " Zip: ", example[1].zip, " Deadline: ", example[1].deadline,
+                  " Weight: ", example[1].weight, " Notes: ", example[1].notes, " Status: ", example[1].status)
 
        

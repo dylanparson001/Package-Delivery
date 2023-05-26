@@ -1,4 +1,5 @@
 import csv
+from Package import Package
 class Spreadsheet:
     def loadPackageData(self, file):
         with open(file) as packages:
