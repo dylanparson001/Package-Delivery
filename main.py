@@ -27,8 +27,10 @@ def loadPackageData(file):
 
 package_table = HashTable()
 
-loadPackageDataa('WGUPSPackageFile.csv')
+loadPackageData('WGUPS Package File.csv')
 
 print(package_table.search('27'))
+example = package_table.search('12')
 
+# package_table.printValues('2')
 package_table.print_table()
