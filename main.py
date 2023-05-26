@@ -1,25 +1,34 @@
 # Dylan Parson Student ID: 010674532
 from HashTable import HashTable
+from Package import Package
 import csv
 
-# Class for Package
-class Package:
-    def __init__(self, id, address, city, zip, deadline, weight, notes, status):
-        self.id = id
-        self.address = address
-        self.city = city
-        self.zip = zip
-        self.deadline = deadline
-        self.weight = weight
-        self.notes = notes
-        self.status = status
+def loadPackageData(file):
+ with open(file) as packages:
+     packageData = csv.reader(packages, delimiter=',')
+     next(packageData)  # skip header
+     for package in packageData:
+         pId = int(package[0])
+         pAddress = package[1]
+         pCity = package[2]
+         pState = package[3]
+         pZip = package[4]
+         pDeadline = package[5]
+         pWeight = package[6]
+         if package[7] is not None:
+             pNotes = package[7]
+         else:
+             pNotes = None
 
+             # create package object
+         package = Package(pId, pAddress, pCity, pState, pZip, pDeadline, pWeight, pNotes)
 
-my_hash_table = HashTable()
+         package_table.insert(str(package.id), package)
 
-my_hash_table.insert('1', 'Test')
-my_hash_table.insert('2', 'Another test')
-my_hash_table.insert('1', 'Testing')
-my_hash_table.delete('2')
-print(my_hash_table.search('1'))
-# my_hash_table.print_table()
+package_table = HashTable()
+
+loadPackageDataa('WGUPSPackageFile.csv')
+
+print(package_table.search('27'))
+
+package_table.print_table()
