@@ -1,12 +1,13 @@
 # Class for Trucks
 
 class Truck:
-    packagesLoaded = []
-    def __init__ (self, id, miles = 0, currentPackages = 0, maximumPackages = 16):
-        self.id = id
-        self.miles = miles
-        self.currentPackages = currentPackages
-        self.maximumPackages = maximumPackages
+    def __init__ (self, packagesLoaded = 0, numCurrentPackages = 0, maxPackages = 16):
+        self.packagesLoaded = []
+        self.numCurrentPackages = 0
+        self.maxPackages = 16
 
+    # Adds to end of list
+    # O(N)
     def loadTruck(self, package):
-        packages.append(package)
+        self.packagesLoaded.append(package)
+        self.numCurrentPackages += 1
