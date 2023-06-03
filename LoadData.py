@@ -23,7 +23,7 @@ class LoadData:
             next(addresses)
             addressData = csv.reader(addresses, delimiter=',')
             for address in addressData:
-                aName = address
+                aName = address[0]
                 addressList.append(aName)
         return addressList
 
@@ -48,7 +48,7 @@ class LoadData:
                  pNotes = None
 
              # create package object
-             package = Package(pId, pAddress, pCity, pZip, pDeadline, pWeight, pNotes, 'Not Delivered')
+             package = Package(pId, pAddress, pCity, pZip, pDeadline, pWeight, pNotes, '')
              # id, address, city, zip, deadline, weight, notes, status
              # load package object into hash table
 

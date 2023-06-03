@@ -8,3 +8,8 @@ class Package:
         self.weight = weight
         self.notes = notes
         self.status = status
+
+    def printValues(self):
+        print("ID: ", self.id, " Address: ", self.address, " City: ", self.city, " Zip: ", self.zip,
+              " Deadline: ", self.deadline,
+              " Weight: ", self.weight, " Notes: ", self.notes, " Status: ", self.status)
