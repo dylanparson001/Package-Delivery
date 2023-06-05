@@ -1,9 +1,11 @@
 # Name: Dylan Parson Student ID: 010674532
 
+# imports
 from HashTable import HashTable
 from Package import Package
 from LoadData import LoadData
 from Truck import Truck
+import datetime
 
 # Function for getting distance between two addresses
 # O(1)
@@ -16,10 +18,11 @@ def minDistanceFrom(fromAddress, truckPackages):
     index = 0
     for i in range(0, 16):
         temp = distanceBetween(fromAddress, truckPackages[i].address)
-        if float(temp) < minDistance:
+        # if the distance is less than the curent lowest, and the current packages has not been delivered
+        if float(temp) < minDistance and truckPackages[i].status != 'DELIVERED':
             minDistance = float(temp)
             index = i
-            packageTable
+            # packageTable
 
     truckPackages[index].status = 'DELIVERED'
     return minDistance
@@ -63,7 +66,10 @@ def truckDeliverPackages(truck):
     if truck.miles < 70:
         milesToAddress = minDistanceFrom(truck.currentAddress, truck.packagesLoaded)
         truck.miles += milesToAddress
-
+        timeToAddress = milesToAddress / 18
+        truck.truckTime = datetime.time(int(timeToAddress))
+        minutesToAddress = timeToAddress * 60
+        
 
 # Create truck objects
 truck1 = Truck()
@@ -85,8 +91,9 @@ distanceList = load.loadDistanceData('WGUPS Distance Table.csv')
 
 initialLoads()
 
-truckDeliverPackages(truck1)
-
+for i in range(0, 15):
+    truckDeliverPackages(truck1)
+    truckDeliverPackages(truck2)
 
 # This does not work because some packages do not get to hub until a certain time
 # Look for packages with not special notes, going to use truck 2 for special notes since most need to be on there
@@ -101,4 +108,3 @@ truckDeliverPackages(truck1)
 #         else:
 #             if truck1.numCurrentPackages == 16 and temp.status == '':
 #                 truck2.loadTruck(packageTable.search(str(i)))
-#
