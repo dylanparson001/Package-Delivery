@@ -19,7 +19,10 @@ class HashTable:
     # O(N)
     def print_table(self):
         for i, val in enumerate(self.data_map):
-            print(i, ": ",  val)
+            package = self.search(str(i))
+            if(package is not None):
+                package.printValues()
+            # print(i, ": ",  val)
     
     #Adds item to the hash table, key is the package ID number
     # O(1)
@@ -53,8 +56,9 @@ class HashTable:
             if item[0] == key:
                 bucket.remove(item)
     # O(1) if there is only one item in a bucket, O(N) if there are multiple
-    def printValues(self, key):
+    def printValues(self):
         example = self.search(key)
         if example is not None:
-            print("ID: ", example.id, " Address: ", example.address, " City: ", example.city, " Zip: ", example.zip, " Deadline: ", example.deadline,
-                  " Weight: ", example.weight, " Notes: ", example.notes, " Status: ", example.status)
+            print("ID: ", self.example.id, " Address: ", self.example.address, " City: ", self.example.city, " Zip: ",
+                  self.example.zip, " Deadline: ", self.example.deadline,
+                  " Weight: ", self.example.weight, " Notes: ", self.example.notes, " Status: ", self.example.status)

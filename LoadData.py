@@ -48,7 +48,7 @@ class LoadData:
                  pNotes = None
 
              # create package object
-             package = Package(pId, pAddress, pCity, pZip, pDeadline, pWeight, pNotes, '')
+             package = Package(pId, pAddress, pCity, pZip, pDeadline, pWeight, pNotes, 'HUB')
              # id, address, city, zip, deadline, weight, notes, status
              # load package object into hash table
 
